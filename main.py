@@ -13,26 +13,26 @@ try:
         bmi_category = categorize_bmi(bmi)
         wc_category = categorize_waist_circumference(waist, gender)
     
-    st.text(f"\nBMI: {bmi:.2f} ({bmi_category} with {wc_category})")
+    st.markdown(f"\nBMI: **{bmi:.2f}** ({bmi_category} with {wc_category})")
 
     rr, absolute_risk = identify_diabetes_risk(
         bmi_category, wc_category, gender
         )
-    st.text(f"Absolute Risk (5 years) for Type 2 Diabetes Mellitus: {absolute_risk}%.")
+    st.markdown(f"Absolute Risk (5 years) for Type 2 Diabetes Mellitus: **{absolute_risk}%**.")
 
     if absolute_risk < 1.0:
-        st.text("Medical Classification: P1")
+        st.markdown("Medical Classification: **P1**")
 
     if 1.0 < absolute_risk <=5.0:
         abn = st.selectbox("Co-morbidities/ abnormal bio-chemistry/ abnormal ECG",["No","Yes"])
         if abn == 'No':
-            st.text("Medical Classification: P1")
+            st.markdown("Medical Classification: **P1**")
             
         else:
-            st.text("Medical Classifiation: P2")
+            st.markdown("Medical Classifiation: **P2**")
     
     if absolute_risk > 5.0:
-        st.text("Medical Classification: P2")
+        st.markdown("Medical Classification: **P2**")
 
 
 
